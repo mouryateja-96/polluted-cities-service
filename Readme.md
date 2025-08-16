@@ -37,11 +37,11 @@ Query parameters:
 	"total": 200,
 	"cities": [
 		{
-			"name": "Berlin",
-			"country": "Germany",
-			"pollution": 51.3,
-			"description": "Berlin is the capital city of Germany."
-		}
+            "name": "Katowice",
+            "country": "",
+            "pollution": 52.8,
+            "description": "Katowice is the capital city of the Silesian Voivodeship in southern Poland and the central city of the Katowice urban area. As of 2021, Katowice has an official population of 286,960, and a resident population estimate of around 315,000. Katowice is a central part of the Metropolis GZM, with a population of 2.3 million, and a part of a larger Katowice–Ostrava metropolitan area that extends into the Czech Republic and has a population of around 5 million people, making it one of the most populous metropolitan areas in the European Union."
+        }
 	]
 }
 ```

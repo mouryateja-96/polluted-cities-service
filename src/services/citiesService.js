@@ -15,6 +15,8 @@ export async function getPollutedCities({ page = 1, limit = 10, country }) {
     () => fetchPollutionData({ country, page, limit })
   )();
   const raw = Array.isArray(apiResponse) ? apiResponse : apiResponse.results;
+  // Debug: log raw data to help diagnose country filtering
+  console.log('[pollution raw]', JSON.stringify(raw, null, 2));
 
   // 2) Normalize and coarse-filter obvious junk (no external calls yet)
   let normalized = raw
@@ -26,7 +28,8 @@ export async function getPollutedCities({ page = 1, limit = 10, country }) {
     .filter((it) => !!it.name && Number.isFinite(it.pollution))
     .filter((it) => isLikelyCityName(it.name));
 
-  if (country) {
+  // Only filter by country if the country field exists and is not empty
+  if (country && normalized.some(it => it.country)) {
     const countryNorm = normalizeCountryName(country);
     normalized = normalized.filter((it) => it.country.toLowerCase() === countryNorm.toLowerCase());
   }
